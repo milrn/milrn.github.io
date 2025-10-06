@@ -28,7 +28,7 @@ url: "https://vuln.team"
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: mi-lrn
+  name: vuln
 
 # Site Verification Settings
 webmaster_verifications:
