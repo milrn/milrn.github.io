@@ -1,5 +1,5 @@
 ---
-author: 1
+author: mi-lrn
 categories:
 - picoCTF
 - Web Exploitation
@@ -13,6 +13,7 @@ tags:
 - Cookies
 - Base64
 - Inspect Element
+- Easy
 title: Cookie Monster Secret Recipe
 ---
 
