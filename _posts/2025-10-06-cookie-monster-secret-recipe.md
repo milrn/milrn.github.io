@@ -17,7 +17,7 @@ tags:
 title: Cookie Monster Secret Recipe
 ---
 
-Cookie Monster Secret Recipie is an Easy Web Exploitation challenge from picoCTF 2025.
+Cookie Monster Secret Recipe is an Easy Web Exploitation challenge from picoCTF 2025. It has almost 30,000 user solves as of writing this.
 
 # Website
 
