@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-We are a passionate hacking team interested in all things web, pwn, reversing, forensics, crypto, or programming!
+We are a passionate hacking team interested in all things web, pwn, reversing, forensics, crypto, and programming!
 
 ## Members
 
