@@ -16,7 +16,7 @@ timezone: America/New_York
 
 title: vuln # the main title
 
-tagline: CTF Team # it will display as the subtitle
+tagline: CTF Team Blogs and Writeups # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Hacking Blogs and Writeups from the vuln CTF Team
