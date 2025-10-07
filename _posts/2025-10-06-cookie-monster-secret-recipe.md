@@ -4,8 +4,6 @@ categories:
 - picoCTF
 - Web Exploitation
 - Easy
-image:
-  path: cookie_monster_secret_recipe.png
 layout: post
 media_subpath: /assets/posts/2025-10-06-cookie-monster-secret-recipe
 tags:
@@ -16,6 +14,8 @@ tags:
 - Easy
 title: Cookie Monster Secret Recipe
 ---
+
+![](cookie_monster_secret_recipe.png)
 
 Cookie Monster Secret Recipe is an Easy Web Exploitation challenge from picoCTF 2025. It has almost 30,000 user solves as of writing this.
 
