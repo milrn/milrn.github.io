@@ -4,11 +4,4 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-We are a passionate hacking team interested in all things web, pwn, reversing, forensics, crypto, and programming!
-
-## Members
-
-- mi-lrn
-- chenraypan
-- 3sidedsquare
-- ptsdwaffle
+I am a passionate CTF player and low-level security enthusiast, and I specialize in web security and pwn. I have several cybersecurity certifications including the PWPE, CWES, PNPT, PORP, and PNPT.
