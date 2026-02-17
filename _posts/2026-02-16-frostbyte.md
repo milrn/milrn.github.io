@@ -69,7 +69,7 @@ PIE is off, which means that the memory addresses of all the binary sections are
 
 # Arbitrary File
 
-/proc/self/mem is a special file in Linux that allows a process to access its own memory directly. It can be used to read or write to the memory of the process, bypassing normal memory protection mechanisms. At this point, my goal was to simply get more than a 1 byte write, so I could inject shellcode into the process. So, using this special file, I just had to find a memory location to overwrite that would write call the main function again with only a one byte write, prompting for another write.
+/proc/self/mem is a special file in Linux that allows a process to access its own memory directly. It can be used to read or write to the memory of the process, bypassing normal memory protection mechanisms. At this point, my goal was to simply get more than a 1 byte write, so I could inject shellcode into the process. So, using this special file, I just had to find a memory location to overwrite that would call the main function again, prompting for another one byte write.
 
 # PLT Overwrite
 
