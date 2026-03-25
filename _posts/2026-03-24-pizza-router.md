@@ -5,14 +5,14 @@ categories:
 - Binary Exploitation
 - Hard
 layout: post
-media_subpath: /assets/posts/2026-03-24--router
+media_subpath: /assets/posts/2026-03-24-pizza-router
 tags:
 - picoCTF 2026
 - Heap
 - Write Primitive
 - Hard
-title:  Router
-description:  Router is a Hard Binary Exploitation challenge from picoCTF 2026. It has around 500 user solves as of writing this.
+title: Pizza Router
+description: Pizza Router is a Hard Binary Exploitation challenge from picoCTF 2026. It has around 500 user solves as of writing this.
 ---
 
 Pizza Router is a Hard Binary Exploitation challenge from picoCTF 2026. It has around 500 user solves as of writing this.
@@ -40,7 +40,7 @@ gef➤  run
 Starting program: /home/kali/Documents/picoctf/pizza_router/router 
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "/usr/lib/x86_64-linux-gnu/libthread_db.so.1".
- Drone Router (type 'help')
+Pizza Drone Router (type 'help')
 router> help
 Commands:
   load <map>
@@ -148,7 +148,7 @@ This was derived from the above code snippet where lVar13 and iVar6 are the orde
 Anyways, with our 8 byte semi-arbitrary write primitive, we can manipulate the heap_idx to write to the first element of the global orders array (ORD[0]) which we found by calculating it's fixed offset from the PIE base (20608).
 
 ```
-┌──(kali㉿kali)-[~/Documents/picoctf/_router]
+┌──(kali㉿kali)-[~/Documents/picoctf/pizza_router]
 └─$ python3            
 Python 3.13.11 (main, Dec  8 2025, 11:43:54) [GCC 15.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
