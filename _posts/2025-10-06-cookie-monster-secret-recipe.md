@@ -1,7 +1,7 @@
 ---
 author: milrn
 categories:
-- picoCTF
+- CTF Writeups
 - Web Exploitation
 - Easy
 layout: post
