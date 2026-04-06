@@ -13,12 +13,12 @@ tags:
 - Inspect Element
 - Easy
 title: Cookie Monster Secret Recipe
-description: Cookie Monster Secret Recipe is an Easy Web Exploitation challenge from picoCTF 2025. It has almost 30,000 user solves as of writing this.
+description: Cookie Monster Secret Recipe was an Easy Web Exploitation challenge from picoCTF 2025. It has almost 30,000 user solves as of writing this.
 ---
 
 ![](cookie_monster_secret_recipe.png)
 
-Cookie Monster Secret Recipe is an Easy Web Exploitation challenge from picoCTF 2025. It has almost 30,000 user solves as of writing this.
+Cookie Monster Secret Recipe was an Easy Web Exploitation challenge from picoCTF 2025. It has almost 30,000 user solves as of writing this.
 
 # Website
 
