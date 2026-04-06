@@ -1,7 +1,7 @@
 ---
 author: milrn
 categories:
-- BKCTF
+- CTF Writeups
 - Binary Exploitation
 - Easy
 layout: post

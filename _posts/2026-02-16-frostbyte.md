@@ -1,8 +1,7 @@
 ---
 author: milrn
 categories:
-- Advent of CTF
-- CyberStudents
+- CTF Writeups
 - Binary Exploitation
 - Hard
 layout: post
