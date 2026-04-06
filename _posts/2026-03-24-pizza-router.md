@@ -1,7 +1,7 @@
 ---
 author: milrn
 categories:
-- picoCTF
+- CTF Writeups
 - Binary Exploitation
 - Hard
 layout: post
@@ -12,10 +12,10 @@ tags:
 - Write Primitive
 - Hard
 title: Pizza Router
-description: Pizza Router is a Hard Binary Exploitation challenge from picoCTF 2026. It has around 500 user solves as of writing this.
+description: Pizza Router was a Hard Binary Exploitation challenge from picoCTF 2026. It has around 500 user solves as of writing this.
 ---
 
-Pizza Router is a Hard Binary Exploitation challenge from picoCTF 2026. It has around 500 user solves as of writing this.
+Pizza Router was a Hard Binary Exploitation challenge from picoCTF 2026. It has around 500 user solves as of writing this.
 
 # Reversing
 
